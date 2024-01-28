@@ -1,6 +1,7 @@
 package com.example.shortt.domain.url.model;
 
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.Id;
@@ -9,12 +10,12 @@ import java.math.BigInteger;
 import java.util.Date;
 
 @Data
+@Builder
 @AllArgsConstructor
 @Document(collection = "urls")
 public class Url {
     @Id
     private BigInteger id;
-    private String uuid;
     private String originalUrl;
     private String alias;
     private String urlType;
@@ -27,7 +28,13 @@ public class Url {
     private int clickCount;
 
     public Url () {
+        this.originalUrl = "https://shortt.app";
         this.clickCount = 0;
         this.pinned = false;
     }
+
+    public String generateAlias() {
+        return "auto-generated-alias";
+    }
+
 }
