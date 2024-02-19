@@ -1,4 +1,4 @@
-package com.example.shortt.infra.url.rest;
+package com.example.shortt.url.infra.web.rest;
 
 import org.springframework.web.bind.annotation.*;
 
@@ -8,7 +8,6 @@ public class UrlController {
 
     @GetMapping
     public Response<GetUrlsResponse> getUrls() {
-
 
     }
     @GetMapping
