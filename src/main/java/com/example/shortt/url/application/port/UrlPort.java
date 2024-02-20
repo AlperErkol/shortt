@@ -1,6 +1,7 @@
 package com.example.shortt.url.application.port;
 
 import com.example.shortt.url.domain.model.Url;
+import org.springframework.stereotype.Component;
 
 import java.util.List;
 

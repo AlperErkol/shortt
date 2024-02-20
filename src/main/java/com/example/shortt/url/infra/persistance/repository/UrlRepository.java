@@ -1,4 +1,4 @@
-package com.example.shortt.url.domain.repository;
+package com.example.shortt.url.infra.persistance.repository;
 
 import com.example.shortt.url.domain.model.Url;
 import org.springframework.data.mongodb.repository.MongoRepository;
