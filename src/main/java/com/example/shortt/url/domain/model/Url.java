@@ -1,14 +1,12 @@
 package com.example.shortt.url.domain.model;
 
 import com.example.shortt.url.infra.common.AbstractModel;
-import jakarta.persistence.Entity;
 import lombok.*;
 import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.data.mongodb.core.mapping.Field;
 
 import java.time.LocalDateTime;
 
-@Entity
 @Getter
 @Setter
 @Document(collection = "urls")
@@ -36,6 +34,6 @@ public class Url extends AbstractModel {
     }
 
     public static String generateAlias() {
-        return "";
+        return "asdad";
     }
 }
