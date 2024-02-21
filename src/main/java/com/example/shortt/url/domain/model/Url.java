@@ -7,9 +7,11 @@ import org.springframework.data.mongodb.core.mapping.Field;
 
 import java.time.LocalDateTime;
 
-@Getter
-@Setter
+@Data
+@EqualsAndHashCode(callSuper = true)
 @Document(collection = "urls")
+@AllArgsConstructor
+@NoArgsConstructor
 public class Url extends AbstractModel {
     @Field
     private String originalUrl;
@@ -22,18 +24,9 @@ public class Url extends AbstractModel {
     @Field
     private Boolean passwordProtection;
     @Field
-    private Boolean pinned;
+    private Boolean pinned = false;
     @Field
     private LocalDateTime timeExpiration;
     @Field
-    private Integer clickCount;
-
-    public Url () {
-        setOriginalUrl("shortt.app");
-        setClickCount(0);
-    }
-
-    public static String generateAlias() {
-        return "asdad";
-    }
+    private Integer clickCount = 0;
 }

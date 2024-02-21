@@ -1,13 +1,17 @@
 package com.example.shortt.url.application.port;
 
+import com.example.shortt.url.application.command.DeleteUrlByAlias;
+import com.example.shortt.url.application.command.GetUrlByAlias;
+import com.example.shortt.url.application.command.UrlAutoCreate;
+import com.example.shortt.url.application.command.UrlCustomCreate;
 import com.example.shortt.url.domain.model.Url;
-import org.springframework.stereotype.Component;
 
 import java.util.List;
 
 public interface UrlPort {
-    Url create(Url url);
-    Url retrieve(String alias);
+    Url createAutoUrl(UrlAutoCreate urlAutoCreate);
+    Url createCustomUrl(UrlCustomCreate urlCustomCreate);
+    Url retrieve(GetUrlByAlias getUrlByAlias);
     List<Url> retrieveAll();
-    Url delete(String alias);
+    Url delete(DeleteUrlByAlias deleteUrlByAlias);
 }

@@ -1,7 +1,5 @@
-package com.example.shortt.url.application.dto.request;
+package com.example.shortt.url.application.command;
 
-import com.example.shortt.url.application.command.CreateUrl;
-import jakarta.validation.constraints.NotNull;
 import lombok.Builder;
 import lombok.Data;
 
@@ -9,19 +7,17 @@ import java.time.LocalDateTime;
 
 @Data
 @Builder
-public class CreateUrlRequest {
-    private String alias;
-    @NotNull
+public class UrlAutoCreate {
+    private String originalUrl;
     private String urlType;
     private String password;
-    @NotNull
     private Boolean passwordProtection;
-    private Boolean pinned;
-    @NotNull
     private LocalDateTime timeExpiration;
 
-    public CreateUrl toModel() {
+
+    public CreateUrl from(String alias) {
         return CreateUrl.builder()
+                .originalUrl(originalUrl)
                 .alias(alias)
                 .urlType(urlType)
                 .password(password)

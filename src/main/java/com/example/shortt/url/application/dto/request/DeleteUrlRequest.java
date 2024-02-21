@@ -1,6 +1,6 @@
 package com.example.shortt.url.application.dto.request;
 
-import com.example.shortt.url.application.command.DeleteUrl;
+import com.example.shortt.url.application.command.DeleteUrlByAlias;
 import lombok.Builder;
 import lombok.Data;
 
@@ -9,7 +9,7 @@ import lombok.Data;
 public class DeleteUrlRequest {
     private String alias;
 
-    public DeleteUrl toModel() {
-        return DeleteUrl.builder().alias(alias).build();
+    public DeleteUrlByAlias toModel() {
+        return DeleteUrlByAlias.builder().alias(alias).build();
     }
 }
