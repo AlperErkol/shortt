@@ -8,6 +8,8 @@ import org.springframework.data.annotation.Id;
 import org.springframework.data.annotation.LastModifiedDate;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 import org.springframework.data.mongodb.core.mapping.Field;
+
+import java.math.BigInteger;
 import java.time.LocalDateTime;
 
 @Getter
@@ -17,7 +19,7 @@ import java.time.LocalDateTime;
 public abstract class AbstractModel {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private BigInteger id;
 
     @CreatedDate
     @Field

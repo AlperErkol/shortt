@@ -3,6 +3,7 @@ package com.example.shortt.url.infra.web.rest;
 import com.example.shortt.url.application.command.CreateUrl;
 import com.example.shortt.url.application.command.DeleteUrlByAlias;
 import com.example.shortt.url.application.command.GetUrlByAlias;
+import com.example.shortt.url.application.command.PinUrl;
 import com.example.shortt.url.application.common.CommandHandler;
 import com.example.shortt.url.application.common.NoCommandHandler;
 import com.example.shortt.url.application.dto.request.CreateUrlRequest;
@@ -27,6 +28,7 @@ public class UrlController {
     private final CommandHandler<Url, GetUrlByAlias> getUrlCommandHandler;
     private final CommandHandler<Url, CreateUrl> createUrlCommandHandler;
     private final CommandHandler<Url, DeleteUrlByAlias> deleteUrlCommandHandler;
+    private final CommandHandler<Url, PinUrl> pinUrlCommandHandler;
 
     @GetMapping
     public Response<List<UrlResponse>> getAllUrls() {
@@ -36,7 +38,7 @@ public class UrlController {
     }
 
     @GetMapping("/{alias}")
-    public Response<UrlResponse> getUrlByAlias(@PathVariable String alias) {
+    public Response<UrlResponse> getUrlByAlias(@Valid @PathVariable String alias) {
         var respond = getUrlCommandHandler.handle(GetUrlByAlias.from(alias));
         log.info("Url with alias {} is retrieved.", alias);
         return new Response<>(true, "Url is retrieved.", UrlResponse.fromModel(respond));
@@ -50,21 +52,22 @@ public class UrlController {
     }
 
     @DeleteMapping("/{alias}")
-    public Response<UrlResponse> deleteUrlByAlias(@PathVariable String alias) {
+    public Response<UrlResponse> deleteUrlByAlias(@Valid @PathVariable String alias) {
         var respond = deleteUrlCommandHandler.handle(DeleteUrlByAlias.from(alias));
         log.info("Url with alias {} is deleted.", respond.getAlias());
         return new Response<>(true, "Url is deleted.", UrlResponse.fromModel(respond));
     }
 
+    @PatchMapping("/pin/{alias}")
+    public Response<UrlResponse> pinUrl(@Valid @PathVariable String alias) {
+        var respond = pinUrlCommandHandler.handle(PinUrl.from(alias));
+        log.info("Url with alias \"{}\" is pinned.", respond.getAlias());
+        return new Response<>(true, "Url is pinned.", UrlResponse.fromModel(respond));
+    }
+
     /*
     @GetMapping("/pin")
     public Response<GetUrlsResponse> getAllPinUrls() {
-
-    }
-
-
-    @PostMapping("/pin/{alias}")
-    public Response<PinUrlResponse> pinUrl(@PathVariable String alias) {
 
     }
 

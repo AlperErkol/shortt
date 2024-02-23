@@ -57,13 +57,6 @@ public class UrlAdapter implements UrlPort {
         return urlRepository.deleteByAlias(alias).orElseThrow(() -> new NotFoundException("An url with alias " + alias + " could not be found."));
     }
 
-    private void aliasValidation(String alias) {
-        Optional<Url> existingUrl = urlRepository.findByAlias(alias);
-        if (existingUrl.isPresent()) {
-            throw new IllegalArgumentException("A URL with the given alias already exists.");
-        }
-    }
-
     private boolean isAliasExist(String alias) {
         Optional<Url> existingUrl = urlRepository.findByAlias(alias);
         return existingUrl.isPresent();

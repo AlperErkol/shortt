@@ -17,7 +17,6 @@ public class CreateUrlRequest {
     @NotNull
     private Boolean passwordProtection;
     private Boolean pinned;
-    @NotNull
     private LocalDateTime timeExpiration;
 
     public CreateUrl toModel() {
