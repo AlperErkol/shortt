@@ -29,6 +29,7 @@ public class UrlController {
     private final CommandHandler<Url, CreateUrl> createUrlCommandHandler;
     private final CommandHandler<Url, DeleteUrlByAlias> deleteUrlCommandHandler;
     private final CommandHandler<Url, PinUrl> pinUrlCommandHandler;
+    private final NoCommandHandler<List<Url>> getAllPinnedUrlsCommandHandler;
 
     @GetMapping
     public Response<List<UrlResponse>> getAllUrls() {
@@ -65,11 +66,10 @@ public class UrlController {
         return new Response<>(true, "Url is pinned.", UrlResponse.fromModel(respond));
     }
 
-    /*
     @GetMapping("/pin")
-    public Response<GetUrlsResponse> getAllPinUrls() {
-
+    public Response<List<UrlResponse>> getAllPinUrls() {
+        var respond = getAllPinnedUrlsCommandHandler.handle();
+        log.info("All pinned urls are retrieved.");
+        return new Response<>(true, "All pinned urls are retrieved.", UrlResponse.fromListModel(respond));
     }
-
-     */
 }
