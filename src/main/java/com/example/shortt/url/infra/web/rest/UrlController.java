@@ -10,6 +10,7 @@ import com.example.shortt.url.application.dto.request.CreateUrlRequest;
 import com.example.shortt.url.application.dto.response.UrlResponse;
 import com.example.shortt.url.domain.model.Url;
 import com.example.shortt.url.infra.common.Response;
+import io.swagger.v3.oas.annotations.Operation;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -32,6 +33,7 @@ public class UrlController {
     private final NoCommandHandler<List<Url>> getAllPinnedUrlsCommandHandler;
 
     @GetMapping
+    @Operation(summary = "Gets all short urls.")
     public Response<List<UrlResponse>> getAllUrls() {
         var respond = getAllUrlsCommandHandler.handle();
         log.info("All urls are retrieved.");
@@ -39,6 +41,7 @@ public class UrlController {
     }
 
     @GetMapping("/{alias}")
+    @Operation(summary = "Gets a short url by alias.")
     public Response<UrlResponse> getUrlByAlias(@Valid @PathVariable String alias) {
         var respond = getUrlCommandHandler.handle(GetUrlByAlias.from(alias));
         log.info("Url with alias {} is retrieved.", alias);
@@ -46,6 +49,7 @@ public class UrlController {
     }
 
     @PostMapping
+    @Operation(summary = "Creates a short url.")
     public Response<UrlResponse> createUrl(@Valid @RequestBody CreateUrlRequest createUrlRequest){
         var respond = createUrlCommandHandler.handle(createUrlRequest.toModel());
         log.info("Url with alias {} is created.", respond.getAlias());
@@ -53,6 +57,7 @@ public class UrlController {
     }
 
     @DeleteMapping("/{alias}")
+    @Operation(summary = "Deletes a short url by alias.")
     public Response<UrlResponse> deleteUrlByAlias(@Valid @PathVariable String alias) {
         var respond = deleteUrlCommandHandler.handle(DeleteUrlByAlias.from(alias));
         log.info("Url with alias {} is deleted.", respond.getAlias());
@@ -60,6 +65,7 @@ public class UrlController {
     }
 
     @PatchMapping("/pin/{alias}")
+    @Operation(summary = "Pins short url.")
     public Response<UrlResponse> pinUrl(@Valid @PathVariable String alias) {
         var respond = pinUrlCommandHandler.handle(PinUrl.from(alias));
         log.info("Url with alias \"{}\" is pinned.", respond.getAlias());
@@ -67,6 +73,7 @@ public class UrlController {
     }
 
     @GetMapping("/pin")
+    @Operation(summary = "Gets all pinned short urls.")
     public Response<List<UrlResponse>> getAllPinUrls() {
         var respond = getAllPinnedUrlsCommandHandler.handle();
         log.info("All pinned urls are retrieved.");
