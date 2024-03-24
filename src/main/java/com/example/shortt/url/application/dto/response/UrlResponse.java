@@ -14,6 +14,7 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 public class UrlResponse {
+    private String originalUrl;
     private String alias;
     private String urlType;
     private String password;
@@ -30,6 +31,7 @@ public class UrlResponse {
 
     public static UrlResponse fromModel(Url url) {
         return UrlResponse.builder()
+                .originalUrl(url.getOriginalUrl())
                 .alias(url.getAlias())
                 .urlType(url.getUrlType())
                 .password(url.getPassword())

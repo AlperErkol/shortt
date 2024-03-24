@@ -13,5 +13,6 @@ public interface UrlPort {
     Url createCustomUrl(UrlCustomCreate urlCustomCreate);
     Url retrieve(GetUrlByAlias getUrlByAlias);
     List<Url> retrieveAll();
+    List<Url> retrieveAllByUuid(String uuid);
     Url delete(DeleteUrlByAlias deleteUrlByAlias);
 }

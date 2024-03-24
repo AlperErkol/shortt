@@ -52,6 +52,11 @@ public class UrlAdapter implements UrlPort {
     }
 
     @Override
+    public List<Url> retrieveAllByUuid(String uuid) {
+        return urlRepository.findAllByUuid(uuid);
+    }
+
+    @Override
     public Url delete(DeleteUrlByAlias deleteUrlByAlias) {
         String alias = deleteUrlByAlias.getAlias();
         return urlRepository.deleteByAlias(alias).orElseThrow(() -> new NotFoundException("An url with alias " + alias + " could not be found."));

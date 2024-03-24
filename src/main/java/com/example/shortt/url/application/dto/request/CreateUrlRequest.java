@@ -10,17 +10,19 @@ import java.time.LocalDateTime;
 @Data
 @Builder
 public class CreateUrlRequest {
+    @NotNull
+    private String originalUrl;
     private String alias;
     @NotNull
     private String urlType;
     private String password;
     @NotNull
     private Boolean passwordProtection;
-    private Boolean pinned;
     private LocalDateTime timeExpiration;
 
     public CreateUrl toModel() {
         return CreateUrl.builder()
+                .originalUrl(originalUrl)
                 .alias(alias)
                 .urlType(urlType)
                 .password(password)

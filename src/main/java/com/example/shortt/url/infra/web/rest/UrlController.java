@@ -24,13 +24,13 @@ import java.util.List;
 @RequiredArgsConstructor
 @RequestMapping("api/v1/urls")
 public class UrlController {
-
     private final NoCommandHandler<List<Url>> getAllUrlsCommandHandler;
     private final CommandHandler<Url, GetUrlByAlias> getUrlCommandHandler;
     private final CommandHandler<Url, CreateUrl> createUrlCommandHandler;
     private final CommandHandler<Url, DeleteUrlByAlias> deleteUrlCommandHandler;
     private final CommandHandler<Url, PinUrl> pinUrlCommandHandler;
     private final NoCommandHandler<List<Url>> getAllPinnedUrlsCommandHandler;
+    private final CommandHandler<List<Url>, String> getAllUrlsByUuidCommandHandler;
 
     @GetMapping
     @Operation(summary = "Gets all short urls.")
@@ -38,6 +38,14 @@ public class UrlController {
         var respond = getAllUrlsCommandHandler.handle();
         log.info("All urls are retrieved.");
         return new Response<>(true, "All urls are retrieved.", UrlResponse.fromListModel(respond));
+    }
+
+    @GetMapping("/uuid/{uuid}")
+    @Operation(summary = "Gets all short urls by given uuid.")
+    public Response<List<UrlResponse>> getAllUrlsByUUID(@Valid @PathVariable String uuid) {
+        var respond = getAllUrlsByUuidCommandHandler.handle(uuid);
+        log.info("All urls by uuid are retrieved.");
+        return new Response<>(true, "All urls by uuid are retrieved.", UrlResponse.fromListModel(respond));
     }
 
     @GetMapping("/{alias}")
