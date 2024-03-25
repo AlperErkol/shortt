@@ -21,9 +21,6 @@ public abstract class AbstractModel {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private BigInteger id;
 
-    @Field
-    private String uuid;
-
     @CreatedDate
     @Field
     private LocalDateTime createdAt;

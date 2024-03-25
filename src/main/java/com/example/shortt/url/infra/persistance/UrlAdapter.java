@@ -69,6 +69,7 @@ public class UrlAdapter implements UrlPort {
 
     private Url create(CreateUrl createUrl) {
         var url = new Url();
+        url.setUuid(createUrl.getUuid());
         url.setOriginalUrl(createUrl.getOriginalUrl());
         url.setAlias(createUrl.getAlias());
         url.setUrlType(createUrl.getUrlType());

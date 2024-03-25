@@ -14,6 +14,8 @@ import java.time.LocalDateTime;
 @NoArgsConstructor
 public class Url extends AbstractModel {
     @Field
+    private String uuid;
+    @Field
     private String originalUrl;
     @Field
     private String alias;

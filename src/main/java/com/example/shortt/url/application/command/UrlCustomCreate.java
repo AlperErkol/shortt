@@ -8,6 +8,7 @@ import java.time.LocalDateTime;
 @Data
 @Builder
 public class UrlCustomCreate {
+    private String uuid;
     private String originalUrl;
     private String alias;
     private String urlType;
@@ -17,6 +18,7 @@ public class UrlCustomCreate {
 
     public CreateUrl toModel() {
         return CreateUrl.builder()
+                .uuid(getUuid())
                 .originalUrl(getOriginalUrl())
                 .alias(getAlias())
                 .urlType(getUrlType())

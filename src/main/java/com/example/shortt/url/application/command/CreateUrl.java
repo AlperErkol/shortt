@@ -9,6 +9,7 @@ import java.time.LocalDateTime;
 @Data
 @Builder
 public class CreateUrl implements BaseCommand {
+    private String uuid;
     private String originalUrl;
     private String alias;
     private String urlType;
@@ -18,6 +19,7 @@ public class CreateUrl implements BaseCommand {
 
     public UrlAutoCreate toUrlAutoCreate() {
         return UrlAutoCreate.builder()
+                .uuid(uuid)
                 .originalUrl(originalUrl)
                 .urlType(urlType)
                 .password(password)
@@ -28,6 +30,7 @@ public class CreateUrl implements BaseCommand {
 
     public UrlCustomCreate toUrlCustomCreate() {
         return UrlCustomCreate.builder()
+                .uuid(uuid)
                 .originalUrl(originalUrl)
                 .alias(alias)
                 .urlType(urlType)

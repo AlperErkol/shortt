@@ -8,6 +8,7 @@ import java.time.LocalDateTime;
 @Data
 @Builder
 public class UrlAutoCreate {
+    private String uuid;
     private String originalUrl;
     private String urlType;
     private String password;
@@ -17,6 +18,7 @@ public class UrlAutoCreate {
 
     public CreateUrl from(String alias) {
         return CreateUrl.builder()
+                .uuid(uuid)
                 .originalUrl(originalUrl)
                 .alias(alias)
                 .urlType(urlType)

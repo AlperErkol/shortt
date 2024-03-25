@@ -28,7 +28,8 @@ public class PinAdapter implements PinPort {
         if (existingUrl.isEmpty()) {
             throw new IllegalStateException("An url with specified alias could not be found.");
         }
-        existingUrl.get().setPinned(true);
+        boolean currentPin = existingUrl.get().getPinned();
+        existingUrl.get().setPinned(!currentPin);
         return urlRepository.save(existingUrl.get());
     }
 }

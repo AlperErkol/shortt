@@ -14,6 +14,7 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 public class UrlResponse {
+    private String uuid;
     private String originalUrl;
     private String alias;
     private String urlType;
@@ -31,6 +32,7 @@ public class UrlResponse {
 
     public static UrlResponse fromModel(Url url) {
         return UrlResponse.builder()
+                .uuid(url.getUuid())
                 .originalUrl(url.getOriginalUrl())
                 .alias(url.getAlias())
                 .urlType(url.getUrlType())
