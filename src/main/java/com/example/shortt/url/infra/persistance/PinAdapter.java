@@ -18,8 +18,8 @@ public class PinAdapter implements PinPort {
     private final UrlRepository urlRepository;
 
     @Override
-    public List<Url> retrieveAll() {
-        return urlRepository.findByPinnedIsTrueOrderByCreatedAtDesc();
+    public List<Url> retrieveAll(String uuid) {
+        return urlRepository.findByPinnedIsTrueAndUuidOrderByCreatedAtDesc(uuid);
     }
 
     @Override

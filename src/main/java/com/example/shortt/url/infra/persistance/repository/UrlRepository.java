@@ -8,7 +8,6 @@ import java.util.Optional;
 public interface UrlRepository extends MongoRepository<Url, Long> {
     Optional<Url> findByAlias(String alias);
     Optional<Url> deleteByAlias(String alias);
-    List<Url> findByOrderByCreatedAtDesc();
-    List<Url> findByPinnedIsTrueOrderByCreatedAtDesc();
+    List<Url> findByPinnedIsTrueAndUuidOrderByCreatedAtDesc(String uuid);
     List<Url> findAllByUuid(String uuid);
 }

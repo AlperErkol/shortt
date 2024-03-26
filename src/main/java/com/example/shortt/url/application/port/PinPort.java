@@ -6,5 +6,5 @@ import java.util.List;
 
 public interface PinPort {
     Url update(PinUrl pinUrl);
-    List<Url> retrieveAll();
+    List<Url> retrieveAll(String uuid);
 }
