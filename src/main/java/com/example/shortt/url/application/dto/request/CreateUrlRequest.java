@@ -4,8 +4,7 @@ import com.example.shortt.url.application.command.CreateUrl;
 import jakarta.validation.constraints.NotNull;
 import lombok.Builder;
 import lombok.Data;
-
-import java.time.LocalDateTime;
+import java.util.Date;
 
 @Data
 @Builder
@@ -20,7 +19,7 @@ public class CreateUrlRequest {
     private String password;
     @NotNull
     private Boolean passwordProtection;
-    private LocalDateTime timeExpiration;
+    private Date timeExpiration;
 
     public CreateUrl toModel() {
         return CreateUrl.builder()

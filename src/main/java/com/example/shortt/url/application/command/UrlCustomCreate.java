@@ -2,8 +2,7 @@ package com.example.shortt.url.application.command;
 
 import lombok.Builder;
 import lombok.Data;
-
-import java.time.LocalDateTime;
+import java.util.Date;
 
 @Data
 @Builder
@@ -14,7 +13,7 @@ public class UrlCustomCreate {
     private String urlType;
     private String password;
     private Boolean passwordProtection;
-    private LocalDateTime timeExpiration;
+    private Date timeExpiration;
 
     public CreateUrl toModel() {
         return CreateUrl.builder()

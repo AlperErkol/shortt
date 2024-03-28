@@ -1,5 +1,6 @@
 package com.example.shortt.url.infra.common;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
@@ -10,7 +11,7 @@ import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 import org.springframework.data.mongodb.core.mapping.Field;
 
 import java.math.BigInteger;
-import java.time.LocalDateTime;
+import java.util.Date;
 
 @Getter
 @Setter
@@ -23,9 +24,11 @@ public abstract class AbstractModel {
 
     @CreatedDate
     @Field
-    private LocalDateTime createdAt;
+    @JsonFormat(pattern="yyyy-MM-dd HH:mm:ss")
+    private Date createdAt;
 
     @LastModifiedDate
     @Field
-    private LocalDateTime updatedAt;
+    @JsonFormat(pattern="yyyy-MM-dd HH:mm:ss")
+    private Date updatedAt;
 }

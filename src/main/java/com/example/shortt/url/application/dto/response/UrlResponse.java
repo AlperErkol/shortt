@@ -5,8 +5,7 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-
-import java.time.LocalDateTime;
+import java.util.Date;
 import java.util.List;
 
 @Data
@@ -21,8 +20,8 @@ public class UrlResponse {
     private String password;
     private Boolean passwordProtection;
     private Boolean pinned;
-    private LocalDateTime timeExpiration;
-    private LocalDateTime createdAt;
+    private Date timeExpiration;
+    private Date createdAt;
     private Integer clickCount;
 
     public static List<UrlResponse> fromListModel(List<Url> urlList) {

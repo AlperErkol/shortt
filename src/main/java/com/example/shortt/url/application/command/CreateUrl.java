@@ -3,8 +3,7 @@ package com.example.shortt.url.application.command;
 import com.example.shortt.url.application.common.BaseCommand;
 import lombok.Builder;
 import lombok.Data;
-
-import java.time.LocalDateTime;
+import java.util.Date;
 
 @Data
 @Builder
@@ -15,7 +14,7 @@ public class CreateUrl implements BaseCommand {
     private String urlType;
     private String password;
     private Boolean passwordProtection;
-    private LocalDateTime timeExpiration;
+    private Date timeExpiration;
 
     public UrlAutoCreate toUrlAutoCreate() {
         return UrlAutoCreate.builder()

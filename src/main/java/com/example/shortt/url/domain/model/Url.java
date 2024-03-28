@@ -1,11 +1,11 @@
 package com.example.shortt.url.domain.model;
 
 import com.example.shortt.url.infra.common.AbstractModel;
+import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.*;
 import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.data.mongodb.core.mapping.Field;
-
-import java.time.LocalDateTime;
+import java.util.Date;
 
 @Data
 @EqualsAndHashCode(callSuper = true)
@@ -28,7 +28,8 @@ public class Url extends AbstractModel {
     @Field
     private Boolean pinned = false;
     @Field
-    private LocalDateTime timeExpiration;
+    @JsonFormat(pattern="yyyy-MM-dd HH:mm:ss")
+    private Date timeExpiration;
     @Field
     private Integer clickCount = 0;
 }
