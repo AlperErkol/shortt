@@ -22,6 +22,7 @@ public class UrlResponse {
     private Boolean passwordProtection;
     private Boolean pinned;
     private LocalDateTime timeExpiration;
+    private LocalDateTime createdAt;
     private Integer clickCount;
 
     public static List<UrlResponse> fromListModel(List<Url> urlList) {
@@ -40,6 +41,7 @@ public class UrlResponse {
                 .passwordProtection(url.getPasswordProtection())
                 .pinned(url.getPinned())
                 .timeExpiration(url.getTimeExpiration())
+                .createdAt(url.getCreatedAt())
                 .clickCount(url.getClickCount())
                 .build();
     }
