@@ -1,4 +1,4 @@
-package com.example.shortt.url.application.common.commandhandler;
+package com.example.shortt.url.application.common.queryhandler;
 
 import com.example.shortt.url.application.common.CommandHandler;
 import com.example.shortt.url.application.port.PinPort;

@@ -1,11 +1,9 @@
 package com.example.shortt.url.infra.web.rest;
 
-import com.example.shortt.url.application.command.CreateUrl;
-import com.example.shortt.url.application.command.DeleteUrlByAlias;
-import com.example.shortt.url.application.command.GetUrlByAlias;
-import com.example.shortt.url.application.command.PinUrl;
+import com.example.shortt.url.application.command.*;
 import com.example.shortt.url.application.common.CommandHandler;
 import com.example.shortt.url.application.common.NoCommandHandler;
+import com.example.shortt.url.application.dto.request.CheckPasswordRequest;
 import com.example.shortt.url.application.dto.request.CreateUrlRequest;
 import com.example.shortt.url.application.dto.response.UrlResponse;
 import com.example.shortt.url.domain.model.Url;
@@ -31,6 +29,7 @@ public class UrlController {
     private final CommandHandler<Url, PinUrl> pinUrlCommandHandler;
     private final CommandHandler<List<Url>, String> getAllPinnedUrlsCommandHandler;
     private final CommandHandler<List<Url>, String> getAllUrlsByUuidCommandHandler;
+    private final CommandHandler<Boolean, CheckPassword> checkPasswordCommandHandler;
 
     @GetMapping
     @Operation(summary = "Gets all short urls.")
@@ -87,4 +86,14 @@ public class UrlController {
         log.info("All pinned urls are retrieved.");
         return new Response<>(true, "All pinned urls are retrieved.", UrlResponse.fromListModel(respond));
     }
+
+    @PostMapping("/password")
+    @Operation(summary = "Checks password of encrypted short url.")
+    public Response<Boolean> checkPassword(
+                                           @Valid @RequestBody CheckPasswordRequest passwordRequest) {
+        var respond = checkPasswordCommandHandler.handle(passwordRequest.toModel());
+        log.info("Password checked!");
+        return new Response<>(true, "Password checked!", respond);
+    }
+
 }
