@@ -53,7 +53,7 @@ public class UrlAdapter implements UrlPort {
 
     @Override
     public List<Url> retrieveAllByUuid(String uuid) {
-        return urlRepository.findAllByUuid(uuid);
+        return urlRepository.findByUuidOrderByCreatedAtDesc(uuid);
     }
 
     @Override

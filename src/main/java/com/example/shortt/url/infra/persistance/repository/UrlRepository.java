@@ -9,5 +9,5 @@ public interface UrlRepository extends MongoRepository<Url, Long> {
     Optional<Url> findByAlias(String alias);
     Optional<Url> deleteByAlias(String alias);
     List<Url> findByPinnedIsTrueAndUuidOrderByCreatedAtDesc(String uuid);
-    List<Url> findAllByUuid(String uuid);
+    List<Url> findByUuidOrderByCreatedAtDesc(String uuid);
 }
