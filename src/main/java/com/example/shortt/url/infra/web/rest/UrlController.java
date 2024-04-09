@@ -6,6 +6,7 @@ import com.example.shortt.url.application.common.NoCommandHandler;
 import com.example.shortt.url.application.dto.request.CheckPasswordRequest;
 import com.example.shortt.url.application.dto.request.CreateUrlRequest;
 import com.example.shortt.url.application.dto.response.UrlResponse;
+import com.example.shortt.url.application.query.GetUrlByAlias;
 import com.example.shortt.url.domain.model.Url;
 import com.example.shortt.url.infra.common.Response;
 import io.swagger.v3.oas.annotations.Operation;

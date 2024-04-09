@@ -7,6 +7,7 @@ import com.example.shortt.url.infra.persistance.repository.UrlRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
+import org.webjars.NotFoundException;
 
 import java.util.List;
 import java.util.Optional;
@@ -26,7 +27,7 @@ public class PinAdapter implements PinPort {
     public Url update(PinUrl pinUrl) {
         Optional<Url> existingUrl = urlRepository.findByAlias(pinUrl.getAlias());
         if (existingUrl.isEmpty()) {
-            throw new IllegalStateException("An url with specified alias could not be found.");
+            throw new NotFoundException("An url with specified alias could not be found.");
         }
         boolean currentPin = existingUrl.get().getPinned();
         existingUrl.get().setPinned(!currentPin);

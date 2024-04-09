@@ -1,9 +1,7 @@
 package com.example.shortt.url.application.port;
 
-import com.example.shortt.url.application.command.DeleteUrlByAlias;
-import com.example.shortt.url.application.command.GetUrlByAlias;
-import com.example.shortt.url.application.command.UrlAutoCreate;
-import com.example.shortt.url.application.command.UrlCustomCreate;
+import com.example.shortt.url.application.command.*;
+import com.example.shortt.url.application.query.GetUrlByAlias;
 import com.example.shortt.url.domain.model.Url;
 
 import java.util.List;
@@ -15,4 +13,5 @@ public interface UrlPort {
     List<Url> retrieveAll();
     List<Url> retrieveAllByUuid(String uuid);
     Url delete(DeleteUrlByAlias deleteUrlByAlias);
+    Boolean checkPassword(CheckPassword checkPassword);
 }

@@ -17,7 +17,6 @@ public class UrlResponse {
     private String originalUrl;
     private String alias;
     private String urlType;
-    private String password;
     private Boolean passwordProtection;
     private Boolean pinned;
     private Date timeExpiration;
@@ -36,7 +35,6 @@ public class UrlResponse {
                 .originalUrl(url.getOriginalUrl())
                 .alias(url.getAlias())
                 .urlType(url.getUrlType())
-                .password(url.getPassword())
                 .passwordProtection(url.getPasswordProtection())
                 .pinned(url.getPinned())
                 .timeExpiration(url.getTimeExpiration())
@@ -44,5 +42,4 @@ public class UrlResponse {
                 .clickCount(url.getClickCount())
                 .build();
     }
-
 }
